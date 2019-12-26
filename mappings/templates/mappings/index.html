@@ -1,0 +1,30 @@
+{% extends "mappings/base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/mappingsForm.css' %}">
+
+{% endblock %}
+{% load field_type %}
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 ">
+            <h2>Welcome to the PictoReview prototype</h2>
+            <p>PictoReview is a software under development designed to generate pictorial metaphors of conference
+                reviews</p>
+            <p>This prototype allows you to create a mapping between the form fields of your conference reviews to our
+                set of generic fields. In the future, these fields
+                will be mapped onto different components of the generated metaphor. It allows mapping based on the field
+                names of the original form or in case you don't want to disclose the field names you can map them based
+                on their order in the data you send. </p>
+            <p>You fill in a form to define a mapping and we will provide you with
+                a JSON header to include in the data you pass to an API that generates the metaphor.</p>
+            <blockquote class="blockquote text-center"> You can find that functionality <a
+                    href="{% url 'mappings' %}">here</a></blockquote>
+            <p>You can then use the generated header and your own review data in JSON format to transform your original data to our metrics.</p>
+            <p>We provide you with a mock-up of an API call that does this transformation along with some examples of input data.</p>
+            <blockquote class="blockquote text-center"> The transformation API mock-up can be found  <a href="{% url 'callMockup' %}">here</a></blockquote>
+
+
+        </div>
+    </div>
+{% endblock %}

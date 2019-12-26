@@ -1,0 +1,93 @@
+{% extends "mappings/base.html" %}
+{% load static %}
+{% load field_type %}
+
+{% block content %}
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 ">
+            <p>For each metric, fill in the name of the original field of your conference review form. You can map up to
+                three fields onto one metric. You also have to provide the range for each original metric by filling in
+                the minimum and maximum values.</p>
+            <p>In case you don't want to use field names, please check the option for order mapping and provide us with
+                numbers that signify the order of the metric in the array of values you send. </p>
+            <h3>Mapping of form fields to metrics</h3>
+            <form class="form-horizontal" method="post" id="mappings-form">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="order-chckbx">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Using order instead of form field names
+                    </label>
+                </div>
+                {% for name, formset in formsets.items %}
+                    {% for form in formset.forms %}
+                        {% csrf_token %}
+                        <div class="{{ formset.prefix }}Formset row">
+
+                        {% for field in form %}
+                            {% if field|field_type == "NumberInput" %}
+                                <div class=" col-md-3">
+                            {% else %}
+                                <div class=" col-md-3">
+                            {% endif %}
+                        <div class="form-group ">
+                            <label class="col-md-8">{{ field.label }} </label>
+                            <div class="col-md-4">
+
+                                {{ field }}</div>
+                        </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                    {% endfor %}
+                    {{ formset.management_form }}
+                {% endfor %}
+                <div class="row">
+                    <button type="submit" class="save btn btn-default" id="submit-json">Generate JSON</button>
+                    <button type="submit" class="save btn btn-default" id="submit-rdf">Generate RDF</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-6" id="json-content">
+                <pre class="pre-scrollable">
+                <code id="json-header">
+
+                </code>
+                </pre>
+        </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        // Define this so we don't have to bother with the admin jsi18n stuff:
+        function gettext(msgid) {
+            return msgid;
+        }
+
+        const prefixes =
+            {
+                relevancePrefix: "{{ formsets.relevanceFormset.prefix }}",
+                noveltyPrefix: "{{ formsets.noveltyFormset.prefix }}",
+                techQualityPrefix: "{{ formsets.techQualityFormset.prefix }}",
+                stateOfArtPrefix: "{{ formsets.stateOfArtFormset.prefix }}",
+                evaluationPrefix: "{{ formsets.evaluationFormset.prefix }}",
+                significancePrefix: "{{ formsets.significanceFormset.prefix }}",
+                presentationPrefix: "{{ formsets.presentationFormset.prefix }}",
+                confidencePrefix: "{{ formsets.confidenceFormset.prefix }}",
+                overallScorePrefix: "{{ formsets.overallScoreFormset.prefix }}"
+            };
+    </script>
+    {{ event_formset.media }}
+    <script type="text/javascript" src="{% static 'js/mappings_formsets.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/extract_mappings.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+
+#mappings-form input[type="number"] {
+    max-width: 50px;
+}
+.fa-minus-square {
+    color: darkred;
+}
+.fa-plus-square {
+    color: green;
+}
+pre {
+    overflow-x: auto;
+}
+pre code {
+    overflow-wrap: normal;
+    white-space: pre;
+}
+#id_JSON_header,#id_JSON_body {
+    width: 100%;
+}
