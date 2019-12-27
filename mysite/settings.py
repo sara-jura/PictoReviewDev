@@ -122,3 +122,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 API_URL = "http://localhost:8000/metricsTransformer/"
+MAPPINGS_URL = "http://localhost:8000/Mappings/"

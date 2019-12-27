@@ -19,7 +19,16 @@
                         Using order instead of form field names
                     </label>
                 </div>
-                {% for name, formset in formsets.items %}
+                {% for formset in formsets %}
+                    <script>
+                     $(function () {
+            $(".{{ formset.prefix }}Formset").formset({
+                formCssClass: '{{ formset.prefix }}-form',
+                addCssClass: '{{ formset.prefix }}-form-add',
+                deleteCssClass: '{{ formset.prefix }}-form-rem',
+                prefix: '{{ formset.prefix }}'
+            })});
+                    </script>
                     {% for form in formset.forms %}
                         {% csrf_token %}
                         <div class="{{ formset.prefix }}Formset row">
@@ -73,21 +82,10 @@
             return msgid;
         }
 
-        const prefixes =
-            {
-                relevancePrefix: "{{ formsets.relevanceFormset.prefix }}",
-                noveltyPrefix: "{{ formsets.noveltyFormset.prefix }}",
-                techQualityPrefix: "{{ formsets.techQualityFormset.prefix }}",
-                stateOfArtPrefix: "{{ formsets.stateOfArtFormset.prefix }}",
-                evaluationPrefix: "{{ formsets.evaluationFormset.prefix }}",
-                significancePrefix: "{{ formsets.significanceFormset.prefix }}",
-                presentationPrefix: "{{ formsets.presentationFormset.prefix }}",
-                confidencePrefix: "{{ formsets.confidenceFormset.prefix }}",
-                overallScorePrefix: "{{ formsets.overallScoreFormset.prefix }}"
-            };
+
     </script>
     {{ event_formset.media }}
-    <script type="text/javascript" src="{% static 'js/mappings_formsets.js' %}"></script>
+
     <script type="text/javascript" src="{% static 'js/extract_mappings.js' %}"></script>
 
 {% endblock %}

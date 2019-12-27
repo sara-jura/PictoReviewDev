@@ -13,35 +13,30 @@ $(document).ready(function () {
         var groupedData = {
             orderMapping : !!$('#order-chckbx').is(':checked'),
             mappings:{
-            relevance: [],
-            novelty: [],
-            techQuality: [],
-            stateOfArt: [],
-            evaluation: [],
-            significance: [],
-            presentation: [],
-            confidence: [],
-            overallScore: [],
+
             }
         };
 
 
         $.each(data, function (key, value) {
-            $.each(prefixes, function (prefixName, prefixValue) {
-                var baseReg = prefixValue + "-[0-9]-" + prefixValue;
-                var reg = new RegExp(baseReg + "$")
+                var baseReg =  "^[a-zA-Z]+-[0-9]-field";
+                var reg = new RegExp(baseReg + "_name$");
                 if (reg.test(key)) {
-                    (groupedData["mappings"][prefixValue]).push({
-                        "max": parseInt(data[key + "_max"]),
+                    field_base=key.match(baseReg);
+                    metric=key.match("^[a-zA-Z]+");
+                    if(!(metric in groupedData["mappings"]))
+                        groupedData["mappings"][metric]=[];
+                    (groupedData["mappings"][metric]).push({
+                        "max": parseInt(data[field_base + "_max"]),
                         "name": (groupedData.orderMapping) ? parseInt(value) :value,
-                        "min": parseInt(data[key + "_min"]),
-                        "weight": parseInt(data[key + "_weight"])
+                        "min": parseInt(data[field_base  + "_min"]),
+                        "weight": parseInt(data[field_base + "_weight"])
 
 
                     })
                 }
             });
-        });
+
         var finalData = JSON.stringify(groupedData, null, 2)
         $('#json-header').empty();
         $('#json-header').append('"mappingsheader":' +finalData)

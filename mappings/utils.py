@@ -1,97 +1,31 @@
-class Metrics:
-    def __init__(self):
-        self.relevance = None
-        self.novelty = None
-        self.techQuality = None
-        self.stateOfArt = None
-        self.evaluation = None
-        self.significance = None
-        self.presentation = None
+from rdflib import Literal, Graph, Namespace
+from rdflib.namespace import RDF, RDFS
+from django.utils.crypto import get_random_string
+from django.conf import settings
 
 
-def maxMin(num, rmin, rmax):
-    tmin = 0
-    tmax = 1
-    return ((num - rmin) / (rmax - rmin)) * (tmax - tmin) + tmin
-
-
-def getMetrics(mappingsHeader, mappingsBody, metricNames):
-    m = Metrics()
-    for metric in metricNames:
-        for v in mappingsHeader[metric]:
-            v["name"]
-            mappingsBody[v["name"]]
-            if (v["name"] == "" or v["name"] is None):
-                setattr(m, metric,None)
-            if getattr(m, metric) is None:
-                setattr(m, metric, maxMin(mappingsBody[v["name"]], v["min"], v["max"]))
-            else:
-                setattr(m, metric,
-                            (getattr(m, metric) + maxMin(mappingsBody[v["name"]], v["min"], v["max"])) / 2)
-
-    return m.__dict__
-
-data = {"mappingsheader": {
-    "orderMapping": False,
-    "mappings": {
-        "relevance": [
-            {"max": 5, "name": "rel1", "min": 0},
-            {"max": 5, "name": "rel2", "min": -5}
-        ],
-        "novelty": [
-            {"max": 1, "name": "nov", "min": -1}
-        ],
-        "techQuality": [
-            {"max": 5, "name": "tech", "min": 0}
-        ],
-        "stateOfArt": [
-            {"max": 5, "name": "state", "min": 0}
-        ],
-        "evaluation": [
-            {"max": 5, "name": "eval", "min": 0}
-        ],
-        "significance": [
-            {"max": 5, "name": "sig", "min": 0}
-        ],
-        "presentation": [
-            {"max": None, "name": "", "min": None}
-        ]
-    }
-},
-    "mappingsbody": {"rel1": 1, "rel2": 2, "nov": 0, "tech": 3, "state": 3, "eval": 2, "sig": 1}}
-
-data2 = {"mappingsheader": {
-    "orderMapping": True,
-    "mappings": {
-        "relevance": [
-            {"max": 5, "name": 0, "min": 0},
-            {"max": 5, "name": 1, "min": -5}
-        ],
-        "novelty": [
-            {"max": 1, "name": 2, "min": -1}
-        ],
-        "techQuality": [
-            {"max": 5, "name": 3, "min": 0}
-        ],
-        "stateOfArt": [
-            {"max": 5, "name": 4, "min": 0}
-        ],
-        "evaluation": [
-            {"max": 5, "name": 5, "min": 0}
-        ],
-        "significance": [
-            {"max": 5, "name": 6, "min": 0}
-        ],
-        "presentation": [
-            {"max": None, "name": "", "min": None}
-        ]
-    }
-},
-    "mappingsbody": [1, 2, 0, 3, 3, 2, 1]}
-data2["mappingsheader"]["mappings"].keys()
-metrics = getMetrics(data2["mappingsheader"]["mappings"], data2["mappingsbody"],
-                     list(data2["mappingsheader"]["mappings"].keys()))
-if (data["mappingsheader"]["orderMapping"]):
-    print("ordermapping")
-
-print(metrics)
+def createGraph(formsets):
+    g = Graph()
+    form_id = get_random_string(8).lower()
+    new = Namespace("http://example.org/mappings/" + form_id + "#")
+    picr = Namespace(settings.MAPPINGS_URL + 'picr/')
+    papeval = Namespace(settings.MAPPINGS_URL + 'papeval/')
+    g.bind(form_id, new)
+    g.bind('picr', picr)
+    g.bind('papeval', papeval)
+    g.add((new[''],RDF.type,picr.ReviewForm))
+    for fs in formsets:
+        if fs.is_valid():
+            for f in fs:
+                cd = f.cleaned_data
+                fieldNode = new[cd.get("field_name").title().replace(" ", "")]
+                mappingNode = new[cd.get("field_name").title().replace(" ", "") + "2" + f.metric.replace(" ", "")]
+                g.add((fieldNode, RDF.type, picr.ReviewFormCriterion))
+                g.add((fieldNode, picr.minVal, Literal(cd.get("field_min"))))
+                g.add((fieldNode, picr.maxVal, Literal(cd.get("field_max"))))
+                g.add((fieldNode, RDFS.label, Literal(cd.get("field_name"))))
+                g.add((mappingNode, RDF.type, picr.F2M_Mapping))
+                g.add((mappingNode, picr['fieldOfMapping'], fieldNode))
+                g.add((mappingNode, picr.metricOfMapping, papeval[f.metric.replace(" ", "")]))
+                g.add((mappingNode, picr.mappingOf, new['']))
+    return g
