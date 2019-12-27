@@ -21,36 +21,35 @@
                 </div>
                 {% for formset in formsets %}
                     <script>
-                     $(function () {
-            $(".{{ formset.prefix }}Formset").formset({
-                formCssClass: '{{ formset.prefix }}-form',
-                addCssClass: '{{ formset.prefix }}-form-add',
-                deleteCssClass: '{{ formset.prefix }}-form-rem',
-                prefix: '{{ formset.prefix }}'
-            })});
+                        $(function () {
+                            $(".{{ formset.prefix }}Formset").formset({
+                                formCssClass: '{{ formset.prefix }}-form',
+                                addCssClass: '{{ formset.prefix }}-form-add',
+                                deleteCssClass: '{{ formset.prefix }}-form-rem',
+                                prefix: '{{ formset.prefix }}'
+                            })
+                        });
                     </script>
                     {% for form in formset.forms %}
                         {% csrf_token %}
                         <div class="{{ formset.prefix }}Formset row">
 
-                        {% for field in form %}
-                            {% if field|field_type == "NumberInput" %}
+                            {% for field in form %}
+
                                 <div class=" col-md-3">
-                            {% else %}
-                                <div class=" col-md-3">
-                            {% endif %}
-                        <div class="form-group ">
-                            <label class="col-md-8">{{ field.label }} </label>
-                            <div class="col-md-4">
 
-                                {{ field }}</div>
+                                    <div class="form-group ">
+                                        <label class="col-md-8">{{ field.label }} </label>
+                                        <div class="col-md-4">
+
+                                            {{ field }}</div>
+                                    </div>
+
+                                </div>
+
+                            {% endfor %}
+
                         </div>
-
-                        </div>
-
-                        {% endfor %}
-
-                    </div>
                     {% endfor %}
                     {{ formset.management_form }}
                 {% endfor %}
@@ -82,7 +81,15 @@
             return msgid;
         }
 
-
+        $(function () {
+            $('#order-chckbx').click(function () {
+                if ($(this).is(':checked')) {
+                    $('#submit-rdf').attr('disabled', 'disabled');
+                } else {
+                    $('#submit-rdf').removeAttr('disabled');
+                }
+            });
+        });
     </script>
     {{ event_formset.media }}
 
