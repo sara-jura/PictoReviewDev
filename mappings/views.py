@@ -48,12 +48,12 @@ def uploadReviews(request):
                 json_head = form['JSON_header'].value()
                 json_body = form['JSON_body'].value()
                 contents = '{' + json_head + ',' + json_body + '}'
-                response = requests.post(settings.API_URL, json=json.loads(contents))
+                response = requests.post('http://'+str(request.get_host())+"/metricsTransformer", json=json.loads(contents))
                 message = response.json()
                 status = 200
                 return JsonResponse(response.json(), safe=False, json_dumps_params={'indent': 2})
             except:
-                message = {'message': 'Something went wrong, perhaps the data wasn\'t in the right format?'}
+                message = {'message': 'Something went wrong, perhaps the data wasn\'t in the right format?'+'http://'+str(request.get_host())+"/metricsTransformer"}
                 status = 500
             finally:
                 return JsonResponse(message, status=status)
