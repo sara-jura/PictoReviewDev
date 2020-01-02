@@ -7,10 +7,10 @@ import json
 # Create your views here.
 @csrf_exempt
 def index(request):
-    """return JsonResponse(request.body,safe=False)
-     return JsonResponse({"ahoj":"ahoj"},safe=False)"""
+
     try:
         data=json.loads(request.body)
+
         metrics=getMetrics(data["mappingsheader"]["mappings"],data["mappingsbody"],list(data["mappingsheader"]["mappings"].keys()))
         return JsonResponse(metrics,  json_dumps_params={'indent': 2},safe=False)
     except:

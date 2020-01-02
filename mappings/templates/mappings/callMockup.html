@@ -14,7 +14,7 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-sm-12 ">
 
-            <form method="post">
+            <form method="post" class="mb-5">
                 {% csrf_token %}
                 {% for field in form %}
                     <div class="form-group row">
@@ -23,8 +23,10 @@
                         <div class="col-sm-8 ">{{ field }}</div>
                     </div>
                 {% endfor %}
-                <button type="submit" class="save btn btn-default">Save</button>
+                <button type="submit" class="save btn btn-primary">Save</button>
             </form>
+        <p>While you would actually call a different API in order to generate the metaphor, this mock-up help you understand in what format you should send your data to the application.
+        </p>
         </div>
     </div>
 {% endblock %}

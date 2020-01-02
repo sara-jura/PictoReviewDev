@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="1aaf452e-512e-43e8-ad13-7fc3b3d7dc0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mappings/static/js/callMockupExamples.js" beforeDir="false" afterPath="$PROJECT_DIR$/mappings/static/js/callMockupExamples.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mappings/templates/mappings/callMockup.html" beforeDir="false" afterPath="$PROJECT_DIR$/mappings/templates/mappings/callMockup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mappings/templates/mappings/formset.html" beforeDir="false" afterPath="$PROJECT_DIR$/mappings/templates/mappings/formset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mappings/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mappings/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metricsTransformer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/metricsTransformer/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictoreview/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictoreview/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictoreview/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictoreview/wsgi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.views">
+  <component name="RunManager" selected="Django server.mysite">
     <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mysite" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,7 +156,9 @@
       <workItem from="1576114135668" duration="9241000" />
       <workItem from="1576857164391" duration="2598000" />
       <workItem from="1577386900402" duration="19962000" />
-      <workItem from="1577456318819" duration="4645000" />
+      <workItem from="1577456318819" duration="7330000" />
+      <workItem from="1577556125596" duration="354000" />
+      <workItem from="1578000716280" duration="5232000" />
     </task>
     <servers />
   </component>

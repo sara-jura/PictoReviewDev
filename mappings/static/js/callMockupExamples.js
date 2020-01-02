@@ -15,32 +15,32 @@ var fieldHead = '"mappingsheader": {\n' +
     '    "orderMapping": false,\n' +
     '    "mappings": {\n' +
     '        "relevance": [\n' +
-    '            {"max": 5, "name": "rel1", "min": 0,"weight":1},\n' +
-    '            {"max": 5, "name": "rel2", "min": -5,"weight":1}\n' +
+    '            {"name": "rel1", "min": 0, "max": 5, "weight": 2},\n' +
+    '            {"name": "rel2", "min": -5, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "novelty": [\n' +
-    '            {"max": 1, "name": "nov", "min": -1,"weight":1}\n' +
+    '            {"name": "nov", "min": -1, "max": 1, "weight": 1}\n' +
     '        ],\n' +
     '        "techQuality": [\n' +
-    '            {"max": 5, "name": "tech", "min": 0,"weight":1}\n' +
+    '            {"name": "tech", "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "stateOfArt": [\n' +
-    '            {"max": 5, "name": "state", "min": 0,"weight":1}\n' +
+    '            {"name": "state", "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "evaluation": [\n' +
-    '            {"max": 5, "name": "eval", "min": 0,"weight":1}\n' +
+    '            {"name": "eval", "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "significance": [\n' +
-    '            {"max": 5, "name": "sig", "min": 0,"weight":1}\n' +
+    '            {"name": "sig", "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "presentation": [\n' +
-    '            {"max": null, "name": "", "min": null,"weight":1}\n' +
+    '            {"name": "", "min": null, "max": null, "weight": 1}\n' +
     '        ],\n' +
     '          "confidence": [\n'+
-    '            {"max": 5,"name": "conf","min": 0,"weight":1}\n' +
+    '            {"name": "conf", "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n'+
     '          "overallScore": [\n'+
-    '            {"max": 5,"name": "oscore","min": 0,"weight":1}\n' +
+    '            {"name": "oscore", "min": 0, "max": 5, "weight": 1}\n' +
     '       ]\n'+
     '    }\n' +
     '}';
@@ -53,36 +53,36 @@ var  orderHead = '"mappingsheader": {\n' +
     '    "orderMapping": true,\n' +
     '    "mappings": {\n' +
     '        "relevance": [\n' +
-    '            {"max": 5, "name": 0, "min": 0},\n' +
-    '            {"max": 5, "name": 1, "min": -5}\n' +
+    '            {"name": 0, "min": 0, "max": 5, "weight": 2},\n' +
+    '            {"name": 1, "min": -5, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "novelty": [\n' +
-    '            {"max": 1, "name": 2, "min": -1}\n' +
+    '            {"name": 2, "min": -1, "max": 1, "weight": 1}\n' +
     '        ],\n' +
     '        "techQuality": [\n' +
-    '            {"max": 5, "name": 3, "min": 0}\n' +
+    '            {"name": 3, "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "stateOfArt": [\n' +
-    '            {"max": 5, "name": 4, "min": 0}\n' +
+    '            {"name": 4, "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "evaluation": [\n' +
-    '            {"max": 5, "name": 5, "min": 0}\n' +
+    '            {"name": 5, "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "significance": [\n' +
-    '            {"max": 5, "name": 6, "min": 0}\n' +
+    '            {"name": 6, "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n' +
     '        "presentation": [\n' +
-    '            {"max": null, "name": "", "min": null}\n' +
+    '            {"name": "", "min": null, "max": null, "weight": null}\n' +
     '        ],\n' +
     '          "confidence": [\n'+
-    '            {"max": 5,"name": 7, "min": 0}\n' +
+    '            {"name": 7, "min": 0, "max": 5, "weight": 1}\n' +
     '        ],\n'+
     '          "overallScore": [\n'+
-    '            {"max": 5,"name": 8,"min": 0}\n' +
+    '            {"name": 8, "min": 0, "max": 5, "weight": 1}\n' +
     '       ]\n'+
     '    }\n' +
     '}';
 var orderBody='"mappingsbody": {\n' +
-    '        "1":[1, 2, 0, 3, 3, 2, 1,1,1],\n' +
-    '        "2":[1, 2, 0, 3, 3, 2, 1,1,1]\n' +
+    '        "1":[1, 2, 0, 3, 3, 2, 1 ,1 ,1],\n' +
+    '        "2":[1, 2, 0, 3, 3, 2, 1, 1, 1]\n' +
     '    }';
