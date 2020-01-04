@@ -13,7 +13,6 @@ def createGraph(formsets):
     g.bind(form_id, new)
     g.bind('picr', picr)
     g.bind('papeval', papeval)
-    g.add((new[''],RDF.type,picr.ReviewForm))
     for fs in formsets:
         if fs.is_valid():
             for f in fs:
@@ -21,6 +20,7 @@ def createGraph(formsets):
                 fieldNode = new[cd.get("field_name").title().replace(" ", "")]
                 mappingNode = new[cd.get("field_name").title().replace(" ", "") + "2" + f.metric.replace(" ", "")]
                 g.add((fieldNode, RDF.type, picr.ReviewFormCriterion))
+                g.add((fieldNode, picr.weight, Literal(cd.get("field_weight"))))
                 g.add((fieldNode, picr.minVal, Literal(cd.get("field_min"))))
                 g.add((fieldNode, picr.maxVal, Literal(cd.get("field_max"))))
                 g.add((fieldNode, RDFS.label, Literal(cd.get("field_name"))))
@@ -28,4 +28,5 @@ def createGraph(formsets):
                 g.add((mappingNode, picr['fieldOfMapping'], fieldNode))
                 g.add((mappingNode, picr.metricOfMapping, papeval[f.metric.replace(" ", "")]))
                 g.add((mappingNode, picr.mappingOf, new['']))
+    g.add((new[''],RDF.type,picr.ReviewForm))
     return g
