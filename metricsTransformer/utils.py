@@ -14,11 +14,12 @@ def getMetrics(mappingsHeader, mappingsBody, metricNames):
         m = Metrics()
         review=mappingsBody[key]
         for metric in metricNames:
-            weigthsum = 0
+            weightsum = 0
             for v in mappingsHeader[metric]:
 
                 if (v["name"] == "" or v["name"] is None):
-                    setattr(m, metric,None)
+                    setattr(m, metric,maxMin(0.5, 0, 1))
+                    weightsum = 1
                     continue
                 if not hasattr(m, metric):
                     setattr(m, metric, v["weight"]*maxMin(review[v["name"]], v["min"], v["max"]))
@@ -26,11 +27,10 @@ def getMetrics(mappingsHeader, mappingsBody, metricNames):
                     setattr(m, metric,
                             (getattr(m, metric) + v["weight"]*maxMin(review[v["name"]], v["min"], v["max"])))
 
-                weigthsum+=v["weight"]
-            if getattr(m, metric) is None:
-                continue
+                weightsum += v["weight"]
+
             setattr(m, metric,
-                    (getattr(m, metric)/weigthsum))
+                    (getattr(m, metric)/weightsum))
         results[key]=m.__dict__
 
     return results
