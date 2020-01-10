@@ -1,0 +1,21 @@
+@prefix 490cfyst: <http://example.org/mappings/490cfyst#> .
+@prefix papeval: <http://localhost:8000/Mappings/dmp/papeval/> .
+@prefix picr: <http://localhost:8000/Mappings/dmp/picr/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+490cfyst:Rel2Relevance a picr:F2M_Mapping ;
+    picr:fieldOfMapping 490cfyst:Rel ;
+    picr:mappingOf 490cfyst: ;
+    picr:metricOfMapping papeval:Relevance .
+
+490cfyst: a picr:ReviewForm .
+
+490cfyst:Rel a picr:ReviewFormCriterion ;
+    rdfs:label "rel" ;
+    picr:maxVal 1 ;
+    picr:minVal -1 ;
+    picr:weight 2 .
+

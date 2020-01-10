@@ -1,0 +1,21 @@
+@prefix etv6arqw: <http://localhost:8000/mappings/etv6arqw#> .
+@prefix papeval: <http://localhost:8000/mappings/papeval/> .
+@prefix picr: <http://localhost:8000/mappings/picr/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+etv6arqw:AaBb2Relevance a picr:F2M_Mapping ;
+    picr:fieldOfMapping etv6arqw:AaBb ;
+    picr:mappingOf etv6arqw: ;
+    picr:metricOfMapping papeval:Relevance .
+
+etv6arqw: a picr:ReviewForm .
+
+etv6arqw:AaBb a picr:ReviewFormCriterion ;
+    rdfs:label "aa bb" ;
+    picr:maxVal 1 ;
+    picr:minVal -1 ;
+    picr:weight 2 .
+

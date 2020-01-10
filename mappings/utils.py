@@ -1,13 +1,11 @@
 from rdflib import Literal, Graph, Namespace
 from rdflib.namespace import RDF, RDFS
-from django.utils.crypto import get_random_string
 from django.conf import settings
 
-
-def createGraph(formsets):
+def createGraph(formsets,form_id):
     g = Graph()
-    form_id = get_random_string(8).lower()
-    new = Namespace("http://example.org/mappings/" + form_id + "#")
+
+    new = Namespace(settings.MAPPINGS_URL + form_id + "#")
     picr = Namespace(settings.MAPPINGS_URL + 'picr/')
     papeval = Namespace(settings.MAPPINGS_URL + 'papeval/')
     g.bind(form_id, new)

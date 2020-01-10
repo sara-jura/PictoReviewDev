@@ -120,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR,'mappings/media')
+MEDIA_URL = "mappings/"
 API_URL = "http://localhost:8000/metricsTransformer/"
-MAPPINGS_URL = "http://localhost:8000/Mappings/"
+MAPPINGS_URL = "http://localhost:8000/mappings/"

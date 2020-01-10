@@ -6,7 +6,9 @@ import json
 from django.conf import settings
 from .utils import createGraph
 import requests
-
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from django.utils.crypto import get_random_string
 
 def index(request):
     return render(request, 'mappings/index.html')
@@ -28,11 +30,11 @@ def defineMappings(request):
         formsets = []
         for key in metrics:
             formsets.append(MetricFormset(request.POST, form_kwargs={'metric': metrics[key]}, prefix=key))
-
-        g = createGraph(formsets)
-
+        form_id = get_random_string(8).lower()
+        g = createGraph(formsets, form_id)
+        default_storage.save(form_id,ContentFile(g.serialize(format='turtle')))
         response = HttpResponse(g.serialize(format='turtle'), content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment; filename="mapping.rdf"'
+        response['Content-Disposition'] = 'attachment; filename="mapping.ttl"'
         return response
     formsets = []
     for key in metrics:
@@ -61,3 +63,7 @@ def uploadReviews(request):
     else:
         form = CallMockupForm()
         return render(request, 'mappings/callMockup.html', {'form': form})
+
+
+def dumpFile(request,conf_prefix):
+    return HttpResponse(default_storage.open(conf_prefix),content_type="text/plain")
