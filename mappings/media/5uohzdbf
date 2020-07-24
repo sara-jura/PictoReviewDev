@@ -1,0 +1,43 @@
+@prefix 5uohzdbf: <http://localhost:8000/mappings/5uohzdbf#> .
+@prefix papeval: <http://localhost:8000/mappings/papeval/> .
+@prefix picr: <http://localhost:8000/mappings/picr/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+5uohzdbf:Nov2Novelty a picr:F2M_Mapping ;
+    picr:fieldOfMapping 5uohzdbf:Nov ;
+    picr:mappingOf 5uohzdbf: ;
+    picr:metricOfMapping papeval:Novelty .
+
+5uohzdbf:Rel2Relevance a picr:F2M_Mapping ;
+    picr:fieldOfMapping 5uohzdbf:Rel ;
+    picr:mappingOf 5uohzdbf: ;
+    picr:metricOfMapping papeval:Relevance .
+
+5uohzdbf:Tc2TechnicalQuality a picr:F2M_Mapping ;
+    picr:fieldOfMapping 5uohzdbf:Tc ;
+    picr:mappingOf 5uohzdbf: ;
+    picr:metricOfMapping papeval:TechnicalQuality .
+
+5uohzdbf:Nov a picr:ReviewFormCriterion ;
+    rdfs:label "nov" ;
+    picr:maxVal 10 ;
+    picr:minVal 5 ;
+    picr:weight 2 .
+
+5uohzdbf:Rel a picr:ReviewFormCriterion ;
+    rdfs:label "rel" ;
+    picr:maxVal 5 ;
+    picr:minVal 0 ;
+    picr:weight 1 .
+
+5uohzdbf:Tc a picr:ReviewFormCriterion ;
+    rdfs:label "tc" ;
+    picr:maxVal 5 ;
+    picr:minVal 0 ;
+    picr:weight 1 .
+
+5uohzdbf: a picr:ReviewForm .
+
