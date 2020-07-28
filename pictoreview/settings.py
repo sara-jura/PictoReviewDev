@@ -122,5 +122,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'mappings/media')
 MEDIA_URL = "mappings/"
-API_URL = "http://localhost:8000/metricsTransformer/"
-MAPPINGS_URL = "http://localhost:8000/mappings/"
+MAPPINGS_URL = "http://kizi.vse.cz/pictoreview/map/"

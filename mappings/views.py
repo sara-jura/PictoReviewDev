@@ -24,22 +24,28 @@ def defineMappings(request):
         'significance': 'Significance',
         'presentation': 'Presentation',
         'confidence': 'Confidence',
-        'overallScore': 'Overall score'
+        'overallScore': 'Overall Score'
     }
     if request.method == 'POST':
         formsets = []
         for key in metrics:
             formsets.append(MetricFormset(request.POST, form_kwargs={'metric': metrics[key]}, prefix=key))
-        form_id = get_random_string(8).lower()
-        g = createGraph(formsets, form_id)
-        default_storage.save(form_id,ContentFile(g.serialize(format='turtle')))
-        response = HttpResponse(g.serialize(format='turtle'), content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment; filename="mapping.ttl"'
-        return response
+        form = IRIForm(request.POST)
+        if(form.is_valid()):
+            form_IRI= form.cleaned_data.get("field_iri")
+            if form_IRI=="":
+                form_IRI= settings.MAPPINGS_URL+get_random_string(8).lower()
+            save_id=get_random_string(8).lower()
+            g = createGraph(formsets, form_IRI)
+            #default_storage.save(get_random_string(8).lower(),ContentFile(g.serialize(format='turtle')))
+            response = HttpResponse(g.serialize(format='turtle'), content_type='application/force-download')
+            response['Content-Disposition'] = 'attachment; filename="mapping.ttl"'
+            return response
     formsets = []
+    form=IRIForm
     for key in metrics:
         formsets.append(MetricFormset(form_kwargs={'metric': metrics[key]}, prefix=key))
-    return render(request, 'mappings/formset.html', {'formsets': formsets})
+    return render(request, 'mappings/formset.html', {'formsets': formsets,"form":form})
 
 
 def uploadReviews(request):

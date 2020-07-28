@@ -1,7 +1,8 @@
 from django import forms
 from django.forms import formset_factory
 
-
+class IRIForm(forms.Form):
+    field_iri = forms.CharField(max_length=60,label='custom IRI for RDF mapping', required=False)
 class MetricForm(forms.Form):
     def __init__(self, *args, metric="metric", **kwargs):
         self.metric=metric
