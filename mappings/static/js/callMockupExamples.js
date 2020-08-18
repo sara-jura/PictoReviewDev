@@ -11,43 +11,119 @@ $('#fieldNamesExampleButton').click(function () {
 
 });
 
-var fieldHead = '"mappingsheader": {\n' +
-    '    "orderMapping": false,\n' +
-    '    "mappings": {\n' +
-    '        "relevance": [\n' +
-    '            {"name": "rel1", "min": 0, "max": 5, "weight": 2},\n' +
-    '            {"name": "rel2", "min": -5, "max": 5, "weight": 1}\n' +
-    '        ],\n' +
-    '        "novelty": [\n' +
-    '            {"name": "nov", "min": -1, "max": 1, "weight": 1}\n' +
-    '        ],\n' +
-    '        "techQuality": [\n' +
-    '            {"name": "tech", "min": 0, "max": 5, "weight": 1}\n' +
-    '        ],\n' +
-    '        "stateOfArt": [\n' +
-    '            {"name": "state", "min": 0, "max": 5, "weight": 1}\n' +
-    '        ],\n' +
-    '        "evaluation": [\n' +
-    '            {"name": "eval", "min": 0, "max": 5, "weight": 1}\n' +
-    '        ],\n' +
-    '        "significance": [\n' +
-    '            {"name": "sig", "min": 0, "max": 5, "weight": 1}\n' +
-    '        ],\n' +
-    '        "presentation": [\n' +
-    '            {"name": "", "min": null, "max": null, "weight": 1}\n' +
-    '        ],\n' +
-    '          "confidence": [\n'+
-    '            {"name": "conf", "min": 0, "max": 5, "weight": 1}\n' +
-    '        ],\n'+
-    '          "overallScore": [\n'+
-    '            {"name": "oscore", "min": 0, "max": 5, "weight": 1}\n' +
-    '       ]\n'+
-    '    }\n' +
-    '}';
-var fieldBody= '"mappingsbody":{\n' +
-    '\t\t"rev1":{"rel1": 1, "rel2": 2, "nov": 0, "tech": 3, "state": 3, "eval": 2, "sig": 1,"conf": 1,"oscore": 1},\n' +
-    '\t\t"rev2":{"rel1": 1, "rel2": 2, "nov": 0, "tech": 3, "state": 3, "eval": 2, "sig": 1,"conf": 1,"oscore": 1}\n' +
-    '\t\t}';
+var fieldHead = `"mappingsheader":{
+                       "orderMapping":false,
+                       "mappings":{
+                          "relevance":[
+                             {
+                                "name":"Appropriateness",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "novelty":[
+                             {
+                                "name":"Originality / innovativeness",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "techQuality":[
+                             {
+                                "name":"Implementation and soundness",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "stateOfArt":[
+                             {
+                                "name":"Related work",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "evaluation":[
+                             {
+                                "name":"Evaluation",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "significance":[
+                             {
+                                "name":"Impact of ideas and results",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "presentation":[
+                             {
+                                "name":"Clarity and quality of writing",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "confidence":[
+                             {
+                                "name":"Reviewer’s confidence",
+                                "min":0,
+                                "max":5,
+                                "weight":1
+                             }
+                          ],
+                          "overallScore":[
+                             {
+                                "name":"Overall evaluation",
+                                "min":-1,
+                                "max":2,
+                                "weight":1
+                             }
+                          ]
+                       }
+                    }
+`;
+var fieldBody=`"mappingsbody":{
+                  "rev1":{
+                     "Appropriateness":4,
+                     "Originality / innovativeness":3,
+                     "Implementation and soundness":4,
+                     "Related work":4,
+                     "Evaluation":4,
+                     "Impact of ideas and results":3,
+                     "Clarity and quality of writing":3,
+                     "Reviewer’s confidence":3,
+                     "Overall evaluation":0
+                  },
+                  "rev2":{
+                     "Appropriateness":5,
+                     "Originality / innovativeness":3,
+                     "Implementation and soundness":3,
+                     "Related work":3,
+                     "Evaluation":3,
+                     "Impact of ideas and results":3,
+                     "Clarity and quality of writing":2,
+                     "Reviewer’s confidence":4,
+                     "Overall evaluation":-1
+                  },
+                  "rev3":{
+                     "Appropriateness":4,
+                     "Originality / innovativeness":4,
+                     "Implementation and soundness":3,
+                     "Related work":3,
+                     "Evaluation":4,
+                     "Impact of ideas and results":3,
+                     "Clarity and quality of writing":5,
+                     "Reviewer’s confidence":4,
+                     "Overall evaluation":2
+                  }
+               }` ;
 
 var  orderHead = '"mappingsheader": {\n' +
     '    "orderMapping": true,\n' +

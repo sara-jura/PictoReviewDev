@@ -14,6 +14,6 @@ def index(request):
         metrics=getMetrics(data["mappingsheader"]["mappings"],data["mappingsbody"],list(data["mappingsheader"]["mappings"].keys()))
         return JsonResponse(metrics,  json_dumps_params={'indent': 2},safe=False)
     except:
-         JsonResponse({'status': 'false', 'message': "Something went wrong, perhaps the data wasn't in the right format?"}, status=500)
+         return JsonResponse({'Error': "Something went wrong with the mapping, try checking the validity of your values"}, status=500)
 
 
