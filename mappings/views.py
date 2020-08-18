@@ -63,8 +63,7 @@ def uploadReviews(request):
                     'Error': 'Something went wrong, perhaps the data wasn\'t in the right format?'}
                 status = 500
                 return JsonResponse(message, status=status, json_dumps_params={'indent': 2})
-            response = requests.post('http://' + str(request.get_host()) + "/metricsTransformer",
-                                     json=json_data)
+            response = requests.post(request.build_absolute_uri("/metricsTransformer"), json=json_data)
             return JsonResponse(response.json(), safe=False, json_dumps_params={'indent': 2})
             # try:
             #     json_head = form['JSON_header'].value()
