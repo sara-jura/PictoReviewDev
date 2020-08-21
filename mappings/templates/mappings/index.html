@@ -9,23 +9,34 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-sm-12 ">
             <h2>Welcome to the PictoReview prototype</h2>
-            <p>PictoReview is a software under development designed to generate pictorial metaphors of conference
-                reviews</p>
-            <p>This prototype allows you to create a mapping between the form fields of your conference reviews to our
-                set of generic fields. In the future, these fields
-                will be mapped onto different components of the generated metaphor. It allows mapping based on the field
-                names of the original form or in case you don't want to disclose the field names you can map them based
-                on their order in the data you send. </p>
-            <p>You fill in a form to define a mapping and we will provide you with
-                a JSON header to include in the data you pass to an API that generates the metaphor.</p>
-            <blockquote class="blockquote text-center"> You can find that functionality <a
-                    href="{% url 'mappings' %}">here</a></blockquote>
-            <p>You can then use the generated header and your own review data in JSON format to transform your original data to our metrics.</p>
-            <p>We provide you with a mock-up of an API call that does this transformation along with some examples of input data.</p>
-            <blockquote class="blockquote text-center"> The transformation API mock-up can be found  <a href="{% url 'callMockup' %}">here</a></blockquote>
-            <p>There's also a third tool, which is a prototype of the pictorial metaphor generator</p>
-            <blockquote class="blockquote text-center"> You can try out the metaphor generator  <a href="http://graficka-a-multimedialni-laborator.cz/pictoreview/">here</a></blockquote>
+            <p>PictoReview is a bundle of prototype tools demonstrating
+                the possibility of creating and exploiting mappings from conference review forms to a
+                generic set of review criteria. The end application showcases the generation
+                of pictorial metaphors of multiple reviews of the same conference paper,
+                leveraging on the mapped values.</p>
+            <p>TThis first prototype, <i>the mapper</i>, allows you to create a mapping between the fields of a specific
+                conference review form to a set of generic metrics (common for knowledge technology conferences). The
+                mapping can be based on the field names of the original form, or, if you do not want to disclose the
+                field names, you can map them based on their order in the input review form data. </p>
+            <p>You fill in a form to define a mapping, and the mapper provides you with a JSON header to include in the
+                data you pass to an API that generates the metaphor (see below), and/or with an RDF representation of
+                the mapping with respect to a provisional <a href="https://kizi.vse.cz/pictoreview/ontology">review metric ontology</a> and the given <a href="https://kizi.vse.cz/pictoreview/metrics"> set of metrics</a> (as a tiny
+                RDF knowledge base). </p>
 
+            <blockquote class="blockquote text-center"> You can find the mapping functionality <a
+                    href="{% url 'mappings' %}">here</a></blockquote>
+            <p>You can then use the generated header and the set of review data in JSON format to <i>transform</i> your
+                original data to the generic metrics. We provide you with a mock-up of an API call that does this
+                transformation, along with some examples of input data. The output data can be, again, saved as a JSON
+                structure.</p>
+            <blockquote class="blockquote text-center"> The transformation API mock-up can be found  <a href="{% url 'callMockup' %}">here</a></blockquote>
+            <p>The third tool is a prototype <i>pictorial metaphor generator</i>. It allows you to upload the JSON file
+                provided by the transformation API mock-up, and outputs a web page with a pictorial scene: each car in
+                the race corresponds to one review. The legend describing the mapping between the review metrics and the
+                pictorial primitives is in the page bottom.</p>
+            <blockquote class="blockquote text-center"> You can try out the metaphor generator  <a href="http://graficka-a-multimedialni-laborator.cz/pictoreview/">here</a></blockquote>
+            <p><i>The research is supported by the VSE IGS project no. 43/2020, „Knowledge Engineering of Researcher
+                Data (KNERD)“.</i></p>
         </div>
     </div>
 {% endblock %}

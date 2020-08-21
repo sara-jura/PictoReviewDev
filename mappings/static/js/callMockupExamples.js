@@ -17,7 +17,7 @@ var fieldHead = `"mappingsheader":{
                           "relevance":[
                              {
                                 "name":"Appropriateness",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -25,7 +25,7 @@ var fieldHead = `"mappingsheader":{
                           "novelty":[
                              {
                                 "name":"Originality / innovativeness",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -33,7 +33,7 @@ var fieldHead = `"mappingsheader":{
                           "techQuality":[
                              {
                                 "name":"Implementation and soundness",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -41,7 +41,7 @@ var fieldHead = `"mappingsheader":{
                           "stateOfArt":[
                              {
                                 "name":"Related work",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -49,7 +49,7 @@ var fieldHead = `"mappingsheader":{
                           "evaluation":[
                              {
                                 "name":"Evaluation",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -57,7 +57,7 @@ var fieldHead = `"mappingsheader":{
                           "significance":[
                              {
                                 "name":"Impact of ideas and results",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -65,7 +65,7 @@ var fieldHead = `"mappingsheader":{
                           "presentation":[
                              {
                                 "name":"Clarity and quality of writing",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -73,7 +73,7 @@ var fieldHead = `"mappingsheader":{
                           "confidence":[
                              {
                                 "name":"Reviewer’s confidence",
-                                "min":0,
+                                "min":1,
                                 "max":5,
                                 "weight":1
                              }
@@ -81,7 +81,7 @@ var fieldHead = `"mappingsheader":{
                           "overallScore":[
                              {
                                 "name":"Overall evaluation",
-                                "min":-1,
+                                "min":-2,
                                 "max":2,
                                 "weight":1
                              }
