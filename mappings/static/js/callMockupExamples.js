@@ -72,7 +72,7 @@ var fieldHead = `"mappingsheader":{
                           ],
                           "confidence":[
                              {
-                                "name":"Reviewer’s confidence",
+                                "name":"Reviewer's confidence",
                                 "min":1,
                                 "max":5,
                                 "weight":1
@@ -98,7 +98,7 @@ var fieldBody=`"mappingsbody":{
                      "Evaluation":4,
                      "Impact of ideas and results":3,
                      "Clarity and quality of writing":3,
-                     "Reviewer’s confidence":3,
+                     "Reviewer's confidence":3,
                      "Overall evaluation":0
                   },
                   "rev2":{
@@ -109,7 +109,7 @@ var fieldBody=`"mappingsbody":{
                      "Evaluation":3,
                      "Impact of ideas and results":3,
                      "Clarity and quality of writing":2,
-                     "Reviewer’s confidence":4,
+                     "Reviewer's confidence":4,
                      "Overall evaluation":-1
                   },
                   "rev3":{
@@ -120,7 +120,7 @@ var fieldBody=`"mappingsbody":{
                      "Evaluation":4,
                      "Impact of ideas and results":3,
                      "Clarity and quality of writing":5,
-                     "Reviewer’s confidence":4,
+                     "Reviewer's confidence":4,
                      "Overall evaluation":2
                   }
                }` ;
