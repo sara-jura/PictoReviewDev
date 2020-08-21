@@ -8,17 +8,10 @@ import json
 @csrf_exempt
 def index(request):
 
-    # try:
-    #     data=json.loads(request.body)
-    #
-    #     metrics=getMetrics(data["mappingsheader"]["mappings"],data["mappingsbody"],list(data["mappingsheader"]["mappings"].keys()))
-    #     return JsonResponse(metrics,  json_dumps_params={'indent': 2},safe=False)
-    # except:
-    #      return JsonResponse({'Error': "Something went wrong with the mapping, try checking the validity of your values"}, status=500)
+    try:
+        data=json.loads(request.body)
 
-
-
-    data = json.loads(request.body)
-
-    metrics=getMetrics(data["mappingsheader"]["mappings"],data["mappingsbody"],list(data["mappingsheader"]["mappings"].keys()))
-    return JsonResponse(metrics,  json_dumps_params={'indent': 2},safe=False)
+        metrics=getMetrics(data["mappingsheader"]["mappings"],data["mappingsbody"],list(data["mappingsheader"]["mappings"].keys()))
+        return JsonResponse(metrics,  json_dumps_params={'indent': 2},safe=False)
+    except:
+         return JsonResponse({'Error': "Something went wrong with the mapping, try checking the validity of your values"}, status=500)

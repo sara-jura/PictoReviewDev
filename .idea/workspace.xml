@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1aaf452e-512e-43e8-ad13-7fc3b3d7dc0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mappings/static/js/callMockupExamples.js" beforeDir="false" afterPath="$PROJECT_DIR$/mappings/static/js/callMockupExamples.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metricsTransformer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/metricsTransformer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,5 +202,9 @@
       <screen x="0" y="0" width="1920" height="1045" />
     </state>
     <state x="728" y="442" width="454" height="158" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1045@0.0.1920.1045" timestamp="1597747826719" />
+    <state x="623" y="230" key="search.everywhere.popup" timestamp="1598018370189">
+      <screen x="0" y="0" width="1920" height="1045" />
+    </state>
+    <state x="623" y="230" key="search.everywhere.popup/0.0.1920.1045@0.0.1920.1045" timestamp="1598018370189" />
   </component>
 </project>
